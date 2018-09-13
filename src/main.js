@@ -1,6 +1,3 @@
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
-
 const VueFormFor = {
   install(Vue) {
     const requireComponent = require.context(
@@ -21,7 +18,18 @@ const VueFormFor = {
         componentName,
         componentConfig.default || componentConfig
       )
-    })    
+    })
+    
+    function upperFirst(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function camelCase(str) {
+       return str.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function(match) {
+          return match.charAt(match.length-1).toUpperCase();
+      }); 
+    }
+  
   }
 }
 
