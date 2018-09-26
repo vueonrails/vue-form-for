@@ -9,9 +9,7 @@ const VueFormFor = {
     requireComponent.keys().forEach(fileName => {
       const componentConfig = requireComponent(fileName)
       const componentName = upperFirst(
-        camelCase(
-          fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
-        )
+        camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, '$1'))
       )
 
       Vue.component(
@@ -21,15 +19,14 @@ const VueFormFor = {
     })
     
     function upperFirst(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     function camelCase(str) {
-       return str.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function(match) {
-          return match.charAt(match.length-1).toUpperCase();
-      }); 
-    }
-  
+      return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+        return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+      }).replace(/[-_]+/g, '');
+    }  
   }
 }
 
