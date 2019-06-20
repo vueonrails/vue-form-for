@@ -43,7 +43,6 @@
         } else {
           return this.attr + "_" + this.for;
         }
-        // return this.attr + "_" + this.for
       }
     }
   }
