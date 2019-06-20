@@ -1,8 +1,8 @@
 <template>
   <input type="submit" 
          name="commit" 
-         :value="computeValue" 
-         :data-disable-with="computeValue" />    
+         :value="getValue" 
+         :data-disable-with="getValue" />    
 </template>
 
 <script>
@@ -14,7 +14,7 @@
       }
     },
     computed: {
-      computeValue: function(){
+      getValue: function(){
         if(this.text != null) return this.text
         return "Create " + this.attr
         //return "Update" + this.attr

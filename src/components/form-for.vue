@@ -1,5 +1,5 @@
 <template>
-  <form :action="computePath" accept-charset="UTF-8" method="post"> 
+  <form :action="getPath" accept-charset="UTF-8" method="post"> 
     <input name="utf8" type="hidden" value="✓">
     <input v-if="isPatch" type="hidden" name="_method" value="patch">
     <input type="hidden" name="authenticity_token" :value="authenticity_token">
@@ -16,6 +16,10 @@ import HiddenField from './hidden-field.vue'
 import PasswordField from './password-field.vue'
 import TextArea from './text-area.vue'
 import Radio from './radio.vue'
+
+//New 
+import FieldsFor from "./fields-for.vue";
+import NumberField from './number-field.vue'
 
 export default {
   provide: function(){
@@ -44,13 +48,15 @@ export default {
     HiddenField,
     PasswordField,
     Radio,
-    TextArea
+    TextArea, 
+    FieldsFor,
+    NumberField
   },
   computed: {
     isPath: function(){
       return ""
     }, 
-    computePath: function(){
+    getPath: function(){
       //if this is a creation form
       return "/" + this.model + "s"
 

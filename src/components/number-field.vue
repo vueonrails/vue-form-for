@@ -1,21 +1,25 @@
 <template>
-  <label :for="getFor">
-    {{getText}} 
-  </label>
+  <input type="number" 
+        :name="getName"
+        :id="getID"
+        @input="$emit('input', $event.target.value)">
 </template>
 
 <script>
 export default {
   inject: {
-    attr: {},
-    nested: { default: ""} //setting it as "" as default because it may not be present in non-nested environment
+    attr: { default: "" },
+    nested: { default: ""}, //setting it as "" as default because it may not be present in non-nested environment
+    patchMode: { default: "" },
+    editMode: { default: "" }, 
+    form: { default: "" }
   },
   props: {
     for: {
       type: String
     },
-    text: {
-      type: String
+   content: {
+      type: Number
     }
   },
   created: function(){
@@ -27,29 +31,33 @@ export default {
     })
     this.index = array.indexOf(this._uid)
   },
+  data: function(){
+    return {
+      index: ""
+    }
+  },
   computed: {
+    value: function(){
+      if (this.patchMode.isPatch == true || this.editMode.isEdit == true) {
+        return this.form.withData[this.for]
+      }else {
+        return this.content
+      }
+    },
     getName: function() {
       if (this.nested != "") {
         return this.attr + "[" + this.nested + "_attributes]" + "["  + this.index + "][" + this.for + "]"
       } else {
         return this.attr + "[" + this.for + "]"
       }
-    }, 
-    getFor: function() {
+    },
+    getID: function() {
       if (this.nested != "") {
         return this.attr + "_" + this.nested + "_attributes" + "_"  + this.index + "_" + this.for
       } else {
         return this.attr + "_" + this.for;
       }
-    },
-    getText: function(){
-      return this.capitalize(this.for) || this.capitalize(this.text)
-    }
-  },
-  methods: {
-    capitalize: function(str){
-      return str.toLowerCase().charAt(0).toUpperCase() + str.slice(1)
     }
   }
-}
+};
 </script>

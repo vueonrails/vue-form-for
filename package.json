@@ -1,6 +1,6 @@
 {
   "name": "vue-form-for",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A Vue on Rails form component <form-for>",
   "main": "src/main.js",
   "scripts": {
@@ -24,5 +24,8 @@
     "vue-template-compiler": "^2.5.9",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^3.1.11"
+  },
+  "dependencies": {
+    "vue-uuid": "^1.1.1"
   }
 }

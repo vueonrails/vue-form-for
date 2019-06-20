@@ -1,6 +1,6 @@
 <template>
-  <input :name="computedName"
-         :id="computedID"
+  <input :name="getName"
+         :id="getID"
          type="password" />   
 </template>
 
@@ -13,10 +13,10 @@
       }
     },
     computed: {
-      computedName: function() {
+      getName: function() {
         return this.attr + "[" + this.for + "]"
       }, 
-      computedID: function() {
+      getID: function() {
         return this.attr + "_" + this.for
       }
     }
