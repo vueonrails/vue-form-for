@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'link-to',
   props: {
     url: {
       type: String

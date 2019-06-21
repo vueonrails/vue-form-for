@@ -1,12 +1,17 @@
 <template>
-  <input :name="getName"
-         :id="getID"
-         type="radio">
+  <input type="radio"
+         :name="getName"
+         :id="getID">
 </template>
 
 <script>
   export default {
-    inject: ['attr'],
+    name: 'radio',
+    inject: {
+        attr: { default: "" },
+        patchMode: { default: "" },
+        editMode: { default: "" }
+      },
     props: {
       for: {
         type: String

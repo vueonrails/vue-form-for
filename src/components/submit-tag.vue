@@ -7,17 +7,26 @@
 
 <script>
   export default {
-    inject: ['attr'],
+    name: 'submit-tag',
+    inject: {
+      attr: { default: "" },
+      patchMode: { default: "" },
+      editMode: { default: "" }
+    },
     props: {
-      text: {
+      value: {
         type: String
       }
     },
     computed: {
       getValue: function(){
-        if(this.text != null) return this.text
-        return "Create " + this.attr
-        //return "Update" + this.attr
+        if (this.value != null) return this.value;
+
+        if (this.patchMode.isPatch == true || this.editMode.isEdit == true) {
+          return "Update " + this.attr;
+        } else {
+          return "Create " + this.attr;
+        }
       }
     }
   }
