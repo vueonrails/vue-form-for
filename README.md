@@ -1,6 +1,6 @@
 # Vue-Form-For
 
-`<form-for>` is a Vue on Rails form component. It is created with [Vue on Rails] products (https://vueonrails.com) in mind.
+`<form-for>` is a form component. It is created with [Vue on Rails](https://vueonrails.com) products in mind.
 
 ## Install
 
