@@ -20,10 +20,16 @@ export default {
       type: String
     }
   },
+  data: function(){
+    return {
+      index: ""
+    }
+  },
   created: function(){
     var array = []
     this.$parent.$children.filter(function(x){
-      if(x._uid != undefined){
+      //Only accept Label nodes and nothing else for goodness sake! 
+      if(x._uid != undefined || (x._vnode != null && x._vnode.tag == "label")){
         array.push(x._uid)
       }
     })

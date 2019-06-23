@@ -33,8 +33,11 @@
     },
     created: function(){
       var array = []
+      console.log(this.$parent.$children)
       this.$parent.$children.filter(function(x){
-        if(x._uid != undefined){
+        // Please DO NOT accept label-tag so as to compute index correctly. Goodness, 
+        // Everything depends on counting correcting!
+        if(x._uid != undefined && (x.$vnode.componentOptions.tag != "label-tag")){
           array.push(x._uid)
         }
       })

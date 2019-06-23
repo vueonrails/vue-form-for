@@ -34,7 +34,8 @@
     created: function(){
       var array = []
       this.$parent.$children.filter(function(x){
-        if(x._uid != undefined){
+        // do not accept label-tag so as to compute index correctly
+        if(x._uid != undefined && (x.$vnode.componentOptions.tag != "label-tag")){
           array.push(x._uid)
         }
       })
